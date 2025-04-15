@@ -1,0 +1,81 @@
+.back-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.create-account-card {
+  max-width: 500px;
+  margin: 80px auto 2rem auto;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+mat-card-header {
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+mat-card-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+mat-card-subtitle {
+  color: #666;
+}
+
+mat-form-field {
+  margin-bottom: 1.5rem;
+}
+
+button[mat-raised-button] {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  font-size: 16px;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* Novo CSS adaptado ao estilo existente */
+.terms-text {
+  font-size: 0.85rem;
+  color: #666;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.terms-text a {
+  color: #3f51b5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.terms-text a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

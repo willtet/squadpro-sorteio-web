@@ -1,0 +1,111 @@
+<mat-toolbar color="primary" class="back-toolbar">
+  <button mat-icon-button (click)="goToLogin()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-card class="create-account-card">
+  <mat-card-header>
+    <mat-card-title>Crie sua conta!</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nome completo</mat-label>
+        <input matInput [(ngModel)]="nomeCompleto" name="firstName" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" [(ngModel)]="email" name="email" required>
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Senha</mat-label>
+        <input
+          matInput
+          [type]="hidePassword ? 'password' : 'text'"
+          [(ngModel)]="password"
+          name="password"
+          required
+          pattern="(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}"
+          #passwordInput="ngModel">
+        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="passwordInput.errors?.['required'] && (passwordInput.dirty || passwordInput.touched)">
+          A senha é obrigatória.
+        </mat-error>
+        <mat-error *ngIf="passwordInput.errors?.['pattern'] && (passwordInput.dirty || passwordInput.touched)">
+          A senha deve ter pelo menos 8 caracteres, um caractere maiúsculo e um caractere especial.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Confirmar Senha</mat-label>
+        <input
+          matInput
+          [type]="hideConfirmPassword ? 'password' : 'text'"
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword"
+          required
+          #confirmPasswordInput="ngModel">
+        <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" type="button">
+          <mat-icon>{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="confirmPasswordInput.errors?.['required'] && (confirmPasswordInput.dirty || confirmPasswordInput.touched)">
+          Confirmação de senha é obrigatória.
+        </mat-error>
+        <mat-error
+          *ngIf="password && confirmPassword && password !== confirmPassword && (confirmPasswordInput.dirty || confirmPasswordInput.touched)">
+          As senhas não correspondem.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Data de nascimento</mat-label>
+        <input matInput [matDatepicker]="picker" readonly [(ngModel)]="dataNascimento" name="dateOfBirth">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>CPF</mat-label>
+        <input matInput [(ngModel)]="cpf" name="cpf" required mask="000.000.000-00">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>&#64;Tiktok</mat-label>
+        <input matInput [(ngModel)]="tiktok" name="tiktok">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>&#64;Instagram</mat-label>
+        <input matInput [(ngModel)]="instagram" name="instagram" required>
+      </mat-form-field>
+
+      <mat-checkbox [(ngModel)]="aceitoNovidades" name="aceitoNovidades" required checked>
+        Aceito receber as novidades do SquadPro e Parceiros
+      </mat-checkbox>
+
+      <p class="terms-text">
+        Ao criar esta conta, você declara estar de acordo com nossos
+        <a href="https://www.squadpro.co/termos-de-uso" target="_blank">Termos</a> &
+        <a href="https://www.squadpro.co/politica-de-privacidade" target="_blank">Política de Privacidade</a>.
+      </p>
+
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="full-width"
+          [disabled]="isLoading">
+          {{ isLoading ? 'Registrando...' : 'Registrar' }}
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>

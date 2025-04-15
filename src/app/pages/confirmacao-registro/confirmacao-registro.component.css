@@ -1,0 +1,38 @@
+.confirmation-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #ece9e6, #ffffff);
+}
+.confirmation-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+.confirmation-card h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+.confirmation-card p {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  color: #555;
+}
+.btn {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.btn:hover {
+  background-color: #0056b3;
+}

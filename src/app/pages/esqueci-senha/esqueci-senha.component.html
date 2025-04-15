@@ -1,0 +1,27 @@
+<mat-card class="login-card">
+  <mat-card-header>
+    <mat-card-title>Esqueci a minha senha</mat-card-title>
+    <mat-card-subtitle>Digite seu e-mail para receber as instruções:</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="forgotPasswordForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" placeholder="Digite seu email">
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" class="full-width" [disabled]="isLoading">
+        <ng-container *ngIf="!isLoading; else loading">
+          Enviar
+        </ng-container>
+        <ng-template #loading>
+          <mat-spinner diameter="20"></mat-spinner>
+        </ng-template>
+      </button>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <a mat-button color="accent" routerLink="/login">Voltar para Login</a>
+  </mat-card-actions>
+  <div *ngIf="message" class="message">{{ message }}</div>
+</mat-card>

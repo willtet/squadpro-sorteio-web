@@ -1,0 +1,60 @@
+<div class="hamburger-container">
+  <button class="hamburger-button" (click)="toggleMenu()">&#9776;</button>
+  <div *ngIf="menuOpen" class="hamburger-menu">
+    <button (click)="logout()">Sair</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <img src="assets/img/logo.png" alt="Logo" class="logo">
+    <h2>Complete as ações abaixo:</h2>
+    <p class="card-text">DATA DO SORTEIO DA LOTERIA FEDERAL: 25/06/2025. Fique ligado!</p>
+    <p *ngIf="disabled()" class="countdown">
+      Atenção: É necessário seguir a página para validar sua participação! Aguarde mais {{ countdown() }} segundos
+
+    </p>
+    <div class="button-group">
+
+      <button
+        *ngFor="let site of sites"
+        [disabled]="disabled()"
+        (click)="sortearSite(site)"
+        [ngClass]="{ 'button-sorteado': site.sorteado }"
+      >
+        🔗 {{ site.sorteado ? site.mensagem + " Número da Sorte: " + site.numeroSorteio : site.mensagem }}
+      </button>
+
+    </div>
+    <div class="influencer-section">
+      <label for="influencerCode">VOTE NO SEU INFLUENCIADOR:</label>
+      <input
+        type="text"
+        [(ngModel)]="influencerCode"
+        placeholder="Código do Influenciador"
+        [disabled]="codigoInfluencer !== null"
+      />
+      <button (click)="submitInfluencerCode()" [disabled]="codigoInfluencer !== null">
+        Enviar Código
+      </button>
+      <p class="embaixadores-text">
+        Não sabe em quem votar?
+        <a href="http://www.squadpro.co/embaixadores" target="_blank">Clique aqui</a>
+        e conheça nossos embaixadores!
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Popup Modal -->
+<div class="popup-overlay" *ngIf="showPopup">
+  <div class="popup">
+    <h3>Parabéns!</h3>
+    <p>
+      Você realizou todas as ações Disponíveis! Agora você pode divulgar e ajudar seu influenciador escolhido a ganhar mais votos!
+      Fique ligado: caso seja sorteado, você deve estar seguindo todas as marcas parceiras para validar seu prêmio, caso contrário será desclassificado!
+    </p>
+    <button (click)="closePopup()">Fechar</button>
+  </div>
+</div>
+

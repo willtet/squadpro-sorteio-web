@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  sorteio_frontend:
+    build: .
+    container_name: sorteio_frontend
+    ports:
+      - "4201:80"
+    restart: always
