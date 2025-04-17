@@ -22,6 +22,16 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Confirmar Email</mat-label>
+        <input matInput type="email" [(ngModel)]="confirmEmail" name="confirmEmail" required #confirmEmailInput="ngModel">
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error
+          *ngIf="(email && confirmEmail && email !== confirmEmail) && (confirmEmailInput.dirty || confirmEmailInput.touched)">
+          Emails não correspondem.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
         <mat-label>Senha</mat-label>
         <input
           matInput
@@ -86,7 +96,7 @@
         <input matInput [(ngModel)]="instagram" name="instagram" required>
       </mat-form-field>
 
-      <mat-checkbox [(ngModel)]="aceitoNovidades" name="aceitoNovidades" required checked>
+      <mat-checkbox [(ngModel)]="aceitoNovidades" name="aceitoNovidades" required >
         Aceito receber as novidades do SquadPro e Parceiros
       </mat-checkbox>
 

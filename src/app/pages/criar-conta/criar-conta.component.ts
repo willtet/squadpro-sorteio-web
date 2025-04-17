@@ -39,6 +39,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CriarContaComponent {
   email: string = '';
+  confirmEmail: string = '';
   cpf: string = '';
   password: string = '';
   confirmPassword: string = '';
@@ -73,13 +74,18 @@ export class CriarContaComponent {
     this.passwordError = '';
     this.confirmPasswordError = '';
 
+    if (this.email !== this.confirmEmail) {
+      this.snackBar.open('Os emails não correspondem!', 'Fechar', { duration: 3000 });
+      return;
+    }
+
     if (!this.validatePassword(this.password)) {
-      this.passwordError = 'A senha deve ter pelo menos 8 caracteres, um caractere maiúsculo e um caractere especial.';
+      this.snackBar.open('A senha deve ter pelo menos 8 caracteres, um caractere maiúsculo e um caractere especial.', 'Fechar', { duration: 3000 });
       return;
     }
 
     if (this.password !== this.confirmPassword) {
-      this.confirmPasswordError = 'As senhas não correspondem!';
+      this.snackBar.open('As senhas não correspondem!', 'Fechar', { duration: 3000 });
       return;
     }
 

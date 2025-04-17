@@ -1,4 +1,4 @@
-import { LoginApiService } from './../services/login-api.service';
+import { LoginApiService } from '../../services/login-api.service';
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';

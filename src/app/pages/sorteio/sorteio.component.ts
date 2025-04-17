@@ -1,4 +1,4 @@
-import { SorteioApiService } from './../services/sorteio-api.service';
+import { SorteioApiService } from '../../services/sorteio-api.service';
 import { Component, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';

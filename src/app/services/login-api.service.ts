@@ -32,6 +32,6 @@ export class LoginApiService {
   }
 
   resetSenha(token: string, senha: string): Observable<string> {
-    return this.http.put(`${this.apiUrl}/auth/reset-password`, {toke: token, senha: senha}, { responseType: 'text' })
+    return this.http.put(`${this.apiUrl}/auth/reset-password`, {token: token, senha: senha}, { responseType: 'text' })
   }
 }
