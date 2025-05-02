@@ -91,13 +91,22 @@ export class CriarContaComponent {
 
     this.isLoading = true;
 
+    let nascimento: string | null = null;
+    if (this.dataNascimento) {
+      const d = this.dataNascimento;
+      const year = d.getFullYear();
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      nascimento = `${year}-${month}-${day}`;
+    }
+
     const userData = {
       nome: this.nomeCompleto,
       cpf: this.cpf.replace(/\D/g, ''),
       email: this.email,
       senha: this.password,
       confirmacaoSenha: this.confirmPassword,
-      dataNascimento: this.dataNascimento,
+      dataNascimento: nascimento,
       instagram: this.instagram,
       aceitoNovidades: this.aceitoNovidades,
       ...(this.tiktok ? { tiktok: this.tiktok } : {})
